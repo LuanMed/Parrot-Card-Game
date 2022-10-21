@@ -1,5 +1,6 @@
 let arr = [];
 let i = 0;
+let codigo;
 
 let qtdeCartas = prompt("Digite a quantidade de cartas");
 
@@ -15,51 +16,60 @@ for (i = 0; i <= qtdeCartas-1; i++){
 }
 
 function virarCarta(selected){
-    selected.classList.add("virada");
-    function delayTrocarImg(){
-        if (selected.classList.contains("0") || selected.classList.contains("1")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/unicornparrot.gif"></li>`
-        }
-        if (selected.classList.contains("2") || selected.classList.contains("3")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/revertitparrot.gif"></li>`
-        }
-        if (selected.classList.contains("4") || selected.classList.contains("5")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/metalparrot.gif"></li>`
-        }
-        if (selected.classList.contains("6") || selected.classList.contains("7")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/fiestaparrot.gif"></li>`
-        }
-        if (selected.classList.contains("8") || selected.classList.contains("9")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/explodyparrot.gif"></li>`
-        }
-        if (selected.classList.contains("10") || selected.classList.contains("11")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/bobrossparrot.gif"></li>`
-        }
-        if (selected.classList.contains("12") || selected.classList.contains("13")){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/tripletsparrot.gif"></li>`
-        }
-    } 
-    
-    setTimeout(function(){
-        
-        delayTrocarImg()
-    }, 300);
-    
-    function desvirarCarta(){
-        selected.classList.remove("virada");
-        function delayDestrocarImg(){
-            selected.innerHTML= `<li onclick="virarCarta(this)" class="caixa"><img src="./imagens/back.png"></li>`
-        }
-        setTimeout(function(){
-        
-            delayDestrocarImg()
-        }, 300);
-    }
 
-    setTimeout(function(){
-        
-        desvirarCarta()
-    }, 2000);
+        function delayTrocarImg(){
+            if (selected.classList.contains("0") || selected.classList.contains("1")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/unicornparrot.gif"></li>`
+            }
+            if (selected.classList.contains("2") || selected.classList.contains("3")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/revertitparrot.gif"></li>`
+            }
+            if (selected.classList.contains("4") || selected.classList.contains("5")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/metalparrot.gif"></li>`
+            }
+            if (selected.classList.contains("6") || selected.classList.contains("7")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/fiestaparrot.gif"></li>`
+            }
+            if (selected.classList.contains("8") || selected.classList.contains("9")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/explodyparrot.gif"></li>`
+            }
+            if (selected.classList.contains("10") || selected.classList.contains("11")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/bobrossparrot.gif"></li>`
+            }
+            if (selected.classList.contains("12") || selected.classList.contains("13")){
+                selected.innerHTML= `<li class="caixa"><img src="./imagens/tripletsparrot.gif"></li>`
+            }
+        }
+        setTimeout(delayTrocarImg, 300);
+        selected.classList.add("flip");
+
+        setTimeout(comparando, 300);
+}
+
+function comparando(){
+    const cartasViradas = document.querySelectorAll(".flip");
+    console.log(cartasViradas);
+    if (cartasViradas.length === 2){
+        if (cartasViradas[0].innerHTML == cartasViradas[1].innerHTML){
+            cartasViradas[0].classList.remove("flip");
+            cartasViradas[1].classList.remove("flip");
+            cartasViradas[0].classList.add("combinada");
+            cartasViradas[1].classList.add("combinada");
+            
+        } else {
+            function desvirarCarta(){
+                    
+                cartasViradas[0].classList.remove("flip");
+                cartasViradas[1].classList.remove("flip");
+                function delayDestrocarImg(){
+                    cartasViradas[0].innerHTML= `<li  class="caixa"><img src="./imagens/back.png"></li>`
+                    cartasViradas[1].innerHTML= `<li  class="caixa"><img src="./imagens/back.png"></li>`
+                }
+                setTimeout(delayDestrocarImg, 300);
+            }
+            setTimeout(desvirarCarta, 1000);  
+        }
+    }
 }
 
 arr.sort(comparador);
@@ -75,5 +85,4 @@ function comparador() {
 let qtdCliques = 0;
 function contarClique(){
     qtdCliques++;
-    console.log(qtdCliques);
 }

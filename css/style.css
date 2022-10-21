@@ -57,17 +57,12 @@ body{
     width: 95px;
 }
 
-.virada{
+.flip{
     transform: rotateY(180deg);
 }
 
-.desvirada{
+.combinada{
     transform: rotateY(180deg);
-    transition-delay: 2s;
-}
-
-.escondida{
-    display:none;
 }
 
 @media (max-width: 614px){
