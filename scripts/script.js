@@ -2,10 +2,11 @@ let arr = [];
 let i = 0;
 let codigo;
 
-let qtdeCartas = prompt("Digite a quantidade de cartas");
+let qtdeCartas = prompt(`Digite a quantidade de cartas:`);
 
 while (qtdeCartas < 4 || qtdeCartas > 14 || qtdeCartas%2 !== 0){
-    alert("Quantidade de cartas inválida! Por favor, selecione números pares de 4 a 14.");
+    alert(`Quantidade de cartas inválida!
+Por favor, selecione números pares de 4 a 14.`);
     qtdeCartas = prompt("Digite a quantidade de cartas");
 }
 
@@ -40,10 +41,12 @@ function virarCarta(selected){
                 selected.innerHTML= `<li class="caixa"><img src="./imagens/tripletsparrot.gif"></li>`
             }
         }
-        setTimeout(delayTrocarImg, 300);
+        setTimeout(delayTrocarImg, 275);
         selected.classList.add("flip");
 
         setTimeout(comparando, 300);
+        setTimeout(encerrarJogo, 400);
+        
 }
 
 function comparando(){
@@ -65,10 +68,19 @@ function comparando(){
                     cartasViradas[0].innerHTML= `<li  class="caixa"><img src="./imagens/back.png"></li>`
                     cartasViradas[1].innerHTML= `<li  class="caixa"><img src="./imagens/back.png"></li>`
                 }
-                setTimeout(delayDestrocarImg, 300);
+                setTimeout(delayDestrocarImg, 275);
             }
             setTimeout(desvirarCarta, 1000);  
         }
+    }
+}
+
+function encerrarJogo(){
+    const contarCombinadas = document.querySelectorAll(".combinada");
+    console.log(contarCombinadas)
+    if (contarCombinadas.length == qtdeCartas){
+        alert(`Yeeih!! Parabéns!
+Você terminou em ${qtdCliques} jogadas!`);
     }
 }
 
