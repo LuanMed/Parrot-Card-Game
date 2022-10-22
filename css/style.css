@@ -71,7 +71,4 @@ body{
         font-size: 36px;
         text-align: center;
     }
-    .caixas{
-        flex-direction: column;
-    }
 }
