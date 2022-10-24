@@ -20,6 +20,17 @@ body{
     color: #75B79E;
 }
 
+.cronometro {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #75B79E;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+}
+
 .container-principal{
     display: flex;
     justify-content: center;
@@ -30,11 +41,34 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.largura4cartas{
+    max-width: 400px;
+}
+
+.largura6cartas{
+    max-width: 500px;
+}
+
+.largura8cartas{
+    max-width: 700px;
+}
+
+.largura10cartas{
+    max-width: 800px;
+}
+
+.largura12cartas{
+    max-width: 1000px;
+}
+
+.largura14cartas{
     max-width: 1100px;
 }
 
 .container-carta{
-    transition: all 1s;
+    transition: all 750ms;
 }
 
 .caixa{
@@ -45,6 +79,7 @@ body{
     margin-bottom: 34px;
     margin-left: 17px;
     margin-right: 17px;
+    box-shadow: 0px 0px 5px black;
     display: flex;
     align-items: center;
     justify-content: center;
